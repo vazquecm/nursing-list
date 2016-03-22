@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("LoginCtrl", [
+app.controller("loginCtrl", [
   '$scope', '$location', function($scope, $location) {
 
     $scope.login = function() {
