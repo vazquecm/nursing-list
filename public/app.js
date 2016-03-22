@@ -1,28 +1,22 @@
 var app = angular.module('MainApp', ['ngRoute']);
 
-app.config([
-  '$routeProvider', '$routeProvider',
-  function($routeProvider, $routeProvider){
+app.config(function($routeProvider) {
 
     $routeProvider
-      .when('login', {
-        url: '/login',
-        templateUrl: '/partials/login.html',
-        controller: 'loginCtrl'
+      .when('/login', {
+        templateUrl: './partials/login.html',
+        controller: 'LoginCtrl'
       })
-      .when('checklists', {
-        url: '/checklists',
-        templateUrl: '/partials/checklists.html',
-        controller: 'checklistsCtrl'
+      .when('/checklists', {
+        templateUrl: './partials/checklists.html',
+        controller: 'ChecklistsCtrl'
       })
-      .when('references', {
-        url: '/references',
-        templateUrl: '/partials/references.html',
-        controller: 'referencesCtrl'
+      .when('/references', {
+        templateUrl: './partials/references.html',
+        controller: 'ReferencesCtrl'
+      })
+      .otherwise({
+        redirectTo: '/login'
       });
 
-
-
-      $routeProvider.otherwise('login');
-
-  }]);
+  });

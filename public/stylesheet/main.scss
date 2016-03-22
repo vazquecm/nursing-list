@@ -1,0 +1,30 @@
+.nav-link {
+  float: right;
+  margin-top: 20px;
+}
+
+
+.checklists__create-input {
+  margin: 0 auto 5px;
+  width: 300px;
+}
+
+.checklists__create-button {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.checklists__task--completed {
+  text-decoration: line-through;
+}
+
+
+.checklists__update-input {
+  margin: 0 auto;
+  width: 300px;
+}
+
+th, td {
+  font-size: 20px;
+  text-align: center;
+}
