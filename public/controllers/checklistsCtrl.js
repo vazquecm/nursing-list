@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("ChecklistsCtrl", [
+app.controller('ChecklistsCtrl', [
   '$scope', '$http', '$location',
 
   function($scope, $http, $location) {
@@ -19,11 +19,18 @@ app.controller("ChecklistsCtrl", [
      task: 'Make sure surgeon is here!!',
      isCompleted: false,
      isEditing: false
+   },
+   {
+     task: 'Grab a drug box!!',
+     isCompleted: false,
+     isEditing: false
    }
-  ]
+  ],
+
+  // listFactory.getTasks($scope);
 
     $scope.createTask = function() {
-    console.log('CREATE A DAMN TASK!!!');
+    console.log('yay, creating a task!!!');
       if (!$scope.createTaskInput) { return; }
 
       $http.post('/checklists', {
@@ -84,34 +91,5 @@ app.controller("ChecklistsCtrl", [
            list.isEditing = false;
    }
 
-
-
-
-
-
-
-
-  }
+}
 ])
-
-
-
-
-
-
-
-    //  $scope.updateTask = function() {
-    //   console.log('why cant we edit?');
-    //   if (!$scope.updateTask) { return; }
-
-    //   $http.put(`/checklists/${list._id}`, { task: list.updatedTask }).success(response => {
-    //       getTasks($scope);
-    //       list.isEditing = false;
-    // })
-    //       list.task = list.updatedTask;
-    //       list.isEditing = false;
-    // }
-    //  $scope.getTasks = function() {
-   //    console.lot('need to get a task');
-   //     $http.get('/checklists').success(response => {
-   //         $scope.checklists = response.checklists;
