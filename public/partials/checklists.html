@@ -1,5 +1,10 @@
 <div class="container">
-    <a ui-sref="/references" class="nav-link">Surgical References</a>
+    <div>
+      <a href='https://human.biodigital.com/index.html' class='nav-link' target='_blank'>Anatomy Information</a>
+        <br></br>
+      <a ui-sref="/procedures" class="nav-link">Surgery Notes</a>
+    </div>
+
     <h1>Surgical Checklist</h1>
 
     <form ng-submit="createTask()">
@@ -29,7 +34,6 @@
                 <form ng-submit="updateTask(list)">
                     <input ng-if="list.isEditing"
                         class="form-control checklists__update-input"
-                        ng-value="list.task"
                         ng-model="list.updatedTask" />
                 </form>
             </td>

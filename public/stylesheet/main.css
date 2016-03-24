@@ -27,3 +27,22 @@ th, td {
   font-size: 20px;
   text-align: center;
 }
+
+.procedures__create-input {
+  margin: 0 auto 5px;
+  width: 300px;
+}
+
+.procedures__create-button {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.procedures__task--completed {
+  text-decoration: line-through;
+}
+
+.procedures__update-input {
+  margin: 0 auto;
+  width: 300px;
+}

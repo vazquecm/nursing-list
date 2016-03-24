@@ -13,10 +13,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         templateUrl: './partials/checklists.html',
         controller: 'ChecklistsCtrl'
       })
-      .state('/references', {
-        url: '/references',
-        templateUrl: './partials/references.html',
-        controller: 'ReferencesCtrl'
+      .state('/procedures', {
+        url: '/procedures',
+        templateUrl: './partials/procedures.html',
+        controller: 'ProceduresCtrl'
       })
       $urlRouterProvider.otherwise('/login');
 

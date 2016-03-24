@@ -27,8 +27,6 @@ app.controller('ChecklistsCtrl', [
    }
   ],
 
-  // listFactory.getTasks($scope);
-
     $scope.createTask = function() {
     console.log('yay, creating a task!!!');
       if (!$scope.createTaskInput) { return; }
@@ -89,7 +87,7 @@ app.controller('ChecklistsCtrl', [
        });
            list.task = list.deleteTask;
            list.isEditing = false;
-   }
+    }
 
-}
+  }
 ])
