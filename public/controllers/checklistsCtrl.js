@@ -24,7 +24,7 @@ app.controller('ChecklistsCtrl', [
      task: 'Grab a drug box!!',
      isCompleted: false,
      isEditing: false
-   }
+   },
   ],
 
     $scope.createTask = function() {
@@ -35,7 +35,8 @@ app.controller('ChecklistsCtrl', [
         task: $scope.createTaskInput,
         isCompleted: false,
         isEditing: false
-      }).success(response => {
+      })
+      .success(response => {
          getTasks($scope);
          $scope.createTaskInput = '';
       })
@@ -77,7 +78,7 @@ app.controller('ChecklistsCtrl', [
 
         list.task = list.updatedTask;
         list.isEditing = false;
-    }
+    };
 
     $scope.deleteTask = function(list) {
       console.log('DELETE IT!!!');
@@ -88,6 +89,5 @@ app.controller('ChecklistsCtrl', [
            list.task = list.deleteTask;
            list.isEditing = false;
     }
-
   }
 ])
