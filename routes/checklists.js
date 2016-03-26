@@ -5,27 +5,21 @@ const router = express.Router();
 const ctrl = require('../ctrls/checklists');
 
 
-
 router.param('id', (req, res, next, id) => {
-  Checklists.findById(id, (err, checklists) => {
+  Checklists
+  .findById(id)
+  .populate('checklists')
+  .exec( (err, checklists) => {
     if (err) throw err;
 
     req.checklists = checklists;
-
-    Checklists.find({checklists: id})
     next();
   });
 
 });
 
-router
-  // .get('/checklists', ctrl.index)
-  // .get('/checklists/new', ctrl.new)
-  .post('/checklists', ctrl.create)
-  // .get('/checklists/:id', ctrl.show)
-  .post('/checklists', ctrl.update)
-  .post('/checklists', ctrl.delete);
+router.post('/checklists', ctrl.create)
+router.put('/checklists/:id', ctrl.update)
+router.delete('/checklists/:id', ctrl.destroy);
 
 module.exports = router;
-
-

@@ -1,4 +1,3 @@
-'use strict';
 
 app.controller('ChecklistsCtrl', [
   '$scope', '$http', '$location',
