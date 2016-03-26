@@ -16,6 +16,11 @@ const checklistsRoutes = require('./routes/checklists');
 
 // init app
 const app = express();
+const MONGODB_HOST = process.env.MONGODB_HOST || `localhost`;
+const MONGODB_PORT = process.env.MONGODB_PORT || 27017;
+const MONGODB_USER = process.env.MONGODB_USER || '';
+const MONGODB_PASS = process.env.MONGODB_PASS || '';
+const MONGODB_NAME = process.env.MONGODB_NAME || `nursing-list`;
 // getting information from the requested url in the browser transfers info into usable JSON -- this is middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
