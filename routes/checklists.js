@@ -1,7 +1,7 @@
 const Checklist = require('../models/checklistsModel')
 const express = require('express');
 const router = express.Router();
-
+const multer = require('multer');
 const ctrl = require('../ctrls/checklists');
 
 

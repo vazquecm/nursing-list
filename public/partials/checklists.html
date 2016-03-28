@@ -1,65 +1,69 @@
-<div class="container">
-    <div>
-      <a href='https://human.biodigital.com/index.html' class='nav-link' target='_blank'>Anatomy Information</a>
-        <br></br>
-      <a ui-sref="/procedures" class="nav-link">Surgery Notes</a>
-    </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class='navbar-links'>
+      <a href='https://human.biodigital.com/index.html' class='nav-link' target='_blank'><font color='FFFFFF'>Anatomy Information</font></a>&nbsp;
+      &nbsp;<a ui-sref="/procedures" class="nav-link"><font color='FFFFFF'>Surgery Notes</font></a>&nbsp;
+  </div>
+</nav>
 
-    <h1>Surgical Checklist</h1>
+<h2 class='sub-headings'>Surgical Checklist</h2>
 
-    <form ng-submit="createTask()">
+<form ng-submit="createTask()">
+ <div class='create-tasks'>
+   <div class="container">
         <input class="form-control checklists__create-input" placeholder="What do I need to do?" ng-model="createTaskInput" />
         <input type="submit" class="btn btn-primary checklists__create-button" value ="Create Task">
-    </form>
+    </div>
+  </div>
+</form>
 
-    <table class="table table-striped">
-        <tr>
-            <th>Completed?</th>
-            <th>Don't Forget To!!!</th>
-            <th>Actions</th>
-        </tr>
-        <tr ng-repeat="list in checklists">
-            <td>
-                <input type="checkbox"
-                    ng-checked="list.isCompleted"
-                    ng-click="onCompletedClick(list)" />
-            </td>
-            <td>
-                <span ng-if="!list.isEditing"
-                    class="checklists__task"
-                    ng-class="{'checklists__task--completed': list.isCompleted}">
-                    {{list.task}}
-                </span>
+  <table class="table table-striped">
+    <tr>
+      <th>Completed?</th>
+      <th>Don't Forget To!!!</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="list in checklists">
+      <td>
+        <input type="checkbox"
+          ng-checked="list.isCompleted"
+          ng-click="onCompletedClick(list)" />
+      </td>
+      <td>
+        <span ng-if="!list.isEditing"
+          class="checklists__task"
+          ng-class="{'checklists__task--completed': list.isCompleted}">
+          {{list.task}}
+        </span>
 
-                <form ng-submit="updateTask(list)">
-                    <input ng-if="list.isEditing"
-                        class="form-control checklists__update-input"
-                        ng-model="list.updatedTask" />
-                </form>
-            </td>
-            <td>
-                <button ng-if="!list.isEditing"
-                    class="btn btn-info btn-xs"
-                    ng-click="onEditClick(list)">
-                    Edit
-                </button>
-                <button ng-if="!list.isEditing"
-                    class="btn btn-danger btn-xs"
-                    ng-click="deleteTask(list)">
-                    Delete
-                </button>
+        <form ng-submit="updateTask(list)">
+          <input ng-if="list.isEditing"
+            class="form-control checklists__update-input"
+            ng-model="list.updatedTask" />
+        </form>
+      </td>
+      <td>
+        <button ng-if="!list.isEditing"
+          class="btn btn-primary btn-xs"
+          ng-click="onEditClick(list)">
+          Edit
+        </button>
+        <button ng-if="!list.isEditing"
+          class="btn btn-danger btn-xs"
+          ng-click="deleteTask(list)">
+          Delete
+        </button>
 
-                <button ng-if="list.isEditing"
-                    class="btn btn-primary btn-xs"
-                    ng-click="updateTask(list)">
-                    Save
-                </button>
-                <button ng-if="list.isEditing"
-                    class="btn btn-default btn-xs"
-                    ng-click="onCancelClick(list)">
-                    Cancel
-                </button>
-            </td>
-        </tr>
-    </table>
+        <button ng-if="list.isEditing"
+          class="btn btn-primary btn-xs"
+          ng-click="updateTask(list)">
+          Save
+        </button>
+        <button ng-if="list.isEditing"
+          class="btn btn-default btn-xs"
+          ng-click="onCancelClick(list)">
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>

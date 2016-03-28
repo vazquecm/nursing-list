@@ -1,17 +1,67 @@
-.nav-link {
-  float: right;
-  margin-top: 20px;
+body {
+  background-color: #BCDACE;
 }
 
+h1 {
+  font-style: italic;
+  color: red;
+  font-family: Courier;
+  text-align: center;
+  font-weight: bolder;
+  font-stretch: semi-expanded;
+  margin-top: 55px;
+}
+.login-page, .form-control, h2{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #439392;
+}
+
+.input-group {
+  width: 250px;
+  display: inline-block;
+  margin: 25px 20px;
+}
+
+.login-image {
+  text-align: center;
+  margin-top: 40px;
+  display: 800%;
+}
+
+/* styleing for navbars */
+.navbar, .navbar-default, .navbar-fixed-top {
+  background-color: #0E7275;
+}
+
+.navbar-links {
+  float: right;
+  margin-top: 20px;
+  font-color: #FFFFFF;
+}
+
+h2.sub-headings {
+  margin-top: 100px;
+  font-style: italic;
+  color: red;
+  font-family: Courier;
+  text-align: center;
+}
+
+/* checklists page */
+.container {
+  text-align: center;
+}
 
 .checklists__create-input {
-  margin: 0 auto 5px;
-  width: 300px;
+  width: 250px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .checklists__create-button {
-  display: block;
-  margin: 0 auto 20px;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 .checklists__task--completed {
@@ -20,29 +70,27 @@
 
 .checklists__update-input {
   margin: 0 auto;
-  width: 300px;
+  width: 250px;
+}
+
+/* procedures/notes page */
+.procedures__create-input {
+  width: 250px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.procedures__create-button {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.procedures__update-input {
+  margin: 0 auto;
+  width: 250px;
 }
 
 th, td {
   font-size: 20px;
   text-align: center;
-}
-
-.procedures__create-input {
-  margin: 0 auto 5px;
-  width: 300px;
-}
-
-.procedures__create-button {
-  display: block;
-  margin: 0 auto 20px;
-}
-
-.procedures__task--completed {
-  text-decoration: line-through;
-}
-
-.procedures__update-input {
-  margin: 0 auto;
-  width: 300px;
 }

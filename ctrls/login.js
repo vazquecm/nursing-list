@@ -3,10 +3,9 @@
 
 const express = require('express');
 const router = express.Router();
-
+const passport = require('passport');
 //dependencies
 const loginUser = require("../models/users");
-
 
 
 module.exports.loginUser = function(req, res) {

@@ -1,61 +1,67 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class='navbar-links'>
+      <a ui-sref="/checklists"  class="nav-link"><font color='FFFFFF'>Surgical Checklist</font></a>
+  </div>
+</nav>
+
+<h2 class='sub-headings'>Surgical procedures/Notes</h2>
+
 <div class="container">
-    <a ui-sref="/checklists"  class="nav-link">Surgical Checklist</a>
+  <div class='page-links'>
+    <form ng-submit="createProcedure()">
+      <input class="form-control procedures__create-input" placeholder="Add a procedure" ng-model="createProcedureInput" />
+      <input type="submit" class="btn btn-primary procedures__create-button" value ="Create procedure">
+    </form>
+  </div>
 
-    <h1>Surgical procedures/Notes</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Procedure</th>
+    <th>FYI & Good To Know</th>
+    <th>Actions</th>
+  </tr>
+  <tr ng-repeat="list in procedures">
+    <td>
+      <form>
+        <span>{{list.procedure}}</span>
+      </form>
+    </td>
+    <td>
+    <span ng-if="!list.isEditing"
+      class="procedures__procedure"
+      ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.updatedProcedureNote">
+      {{list.note}}
+    </span>
 
-<form ng-submit="createProcedure()">
-  <input class="form-control procedures__create-input" placeholder="Add a procedure" ng-model="createProcedureInput" />
-  <input type="submit" class="btn btn-primary procedures__create-button" value ="Create procedure">
-</form>
+      <form ng-submit="updateProcedureNote(list)">
+        <input ng-if="list.isEditing"
+          ng-model="list.note"
+          class="form-control procedures__update-input"
+           />
+      </form>
+    </td>
+    <td>
+      <button ng-if="!list.isEditing"
+        class="btn btn-primary btn-xs"
+        ng-click="onEditClick(list)">
+        Edit
+      </button>
+      <button ng-if="!list.isEditing"
+        class="btn btn-danger btn-xs"
+        ng-click="deleteNote(list)">
+        Delete
+      </button>
 
-  <table class="table table-striped">
-    <tr>
-      <th>Procedure</th>
-      <th>FYI & Good To Know</th>
-      <th>Actions</th>
-    </tr>
-    <tr ng-repeat="list in procedures">
-      <td>
-        <form>
-          <span>{{list.procedure}}</span>
-        </form>
-      </td>
-      <td>
-      <span ng-if="!list.isEditing"
-        class="procedures__procedure"
-        ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.updatedProcedureNote">
-        {{list.note}}
-      </span>
-
-        <form ng-submit="updateProcedureNote(list)">
-          <input ng-if="list.isEditing"
-            ng-model="list.note"
-            class="form-control procedures__update-input"
-             />
-        </form>
-      </td>
-      <td>
-        <button ng-if="!list.isEditing"
-            class="btn btn-info btn-xs"
-            ng-click="onEditClick(list)">
-            Edit
-        </button>
-        <button ng-if="!list.isEditing"
-            class="btn btn-danger btn-xs"
-            ng-click="deleteNote(list)">
-            Delete
-        </button>
-
-        <button ng-if="list.isEditing"
-            class="btn btn-primary btn-xs"
-            ng-click="updateNote(list)">
-            Save
-        </button>
-        <button ng-if="list.isEditing"
-            class="btn btn-default btn-xs"
-            ng-click="onCancelClick(list)">
-            Cancel
-        </button>
+      <button ng-if="list.isEditing"
+        class="btn btn-primary btn-xs"
+        ng-click="updateNote(list)">
+        Save
+      </button>
+      <button ng-if="list.isEditing"
+        class="btn btn-default btn-xs"
+        ng-click="onCancelClick(list)">
+        Cancel
+      </button>
     </td>
   </tr>
  </table>
