@@ -1,26 +1,24 @@
 body {
-  background-color: #BCDACE;
+  background-color: #bcdace;
 }
 
 h1 {
-  font-style: italic;
-  color: red;
-  font-family: Courier;
+  color: #FFFFFF;
+  font-family: 'Comfortaa', cursive;
   text-align: center;
   font-weight: bolder;
-  font-stretch: semi-expanded;
-  margin-top: 55px;
 }
-.login-page, .form-control, h2{
+
+/*.login-page {
   text-align: center;
   margin-bottom: 20px;
   color: #439392;
 }
-
+*/
 .input-group {
-  width: 250px;
   display: inline-block;
-  margin: 25px 20px;
+  text-align: center;
+  margin-top: 100px;
 }
 
 .login-image {
@@ -30,20 +28,19 @@ h1 {
 }
 
 /* styleing for navbars */
-.navbar, .navbar-default, .navbar-fixed-top {
+.navbar, .navbar-default, .navbar-fixed-top, .navbar-fixed-bottom {
   background-color: #0E7275;
 }
 
 .navbar-links {
   float: right;
   margin-top: 20px;
-  font-color: #FFFFFF;
 }
 
 h2.sub-headings {
   margin-top: 100px;
   font-style: italic;
-  color: red;
+  color: #767c7a;
   font-family: Courier;
   text-align: center;
 }
@@ -93,4 +90,8 @@ h2.sub-headings {
 th, td {
   font-size: 20px;
   text-align: center;
+}
+
+p {
+  color: #FFFFFF;
 }
