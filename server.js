@@ -22,8 +22,7 @@ const app = express();
 //
 // configuration
 const PORT = process.env.PORT || 3000;
-const MONGODB_URL = 'mongodb://localhost:27017/nursing-list';
-console.log('URL', MONGODB_URL);
+//const MONGODB_URL = 'mongodb://localhost:27017/nursing-list';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'secret';
 
 // setup mongodb URL
@@ -37,7 +36,7 @@ const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
 const MONGODB_AUTH = MONGODB_USER
   ? `${MONGODB_USER}:${MONGODB_PASS}@`
   : '';
-
+const MONGODB_URL = `mongodb://${MONGODB_AUTH}${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`;
   const sassMiddleware = require('node-sass-middleware');
 
 // getting information from the requested url in the browser transfers info into usable JSON -- this is middleware
