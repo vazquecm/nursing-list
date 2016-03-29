@@ -14,3 +14,14 @@
 7. bower install jquery
 8. npm install mongoose, mongodb --save
 9. npm install nodejs --save
+
+### Current Features
+1. Nurse can create a task
+2. Task can be edited and or deleted
+3. Nurse can add a procedure with a note for specific procedure
+4. Procedure/Note can both be edited or deleted
+
+###Features to be implemented in version 2.0
+1. Authorization secure
+2. Able to retrieve specific surgical info
+3. Ability to share notes with other nurses to help them out.

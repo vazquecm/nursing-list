@@ -28,20 +28,22 @@ app.controller('ProceduresCtrl', [
    },
   ],
 
+// Load data from DB on controller load
   function getProcedures() {
-      console.log('doing something for procedures')
+      console.log('doing something for procedures');
       $http.get('/procedures')
         .then(function(res) {
         console.log(res.data);
         $scope.procedures = $scope.procedures.concat(res.data);
         console.log($scope.procedures)
       })
-    }()
+    }();
 
+// both input fields used to create one procedure
   $scope.createProcedure = function() {
-    console.log('create some new procedure!!!');
       if (!$scope.createProcedureInput) { return; }
-
+      if (!$scope.createNoteInput) { return; }
+    console.log('create some new procedure!!!');
       $http.post('/procedures', {
         procedure: $scope.createProcedureInput,
         note: $scope.createNoteInput,
@@ -49,35 +51,21 @@ app.controller('ProceduresCtrl', [
         isEditing: false
       })
       .then(function(res) {
-        console.log(res.data);
-         // getProcedures($scope);
+        console.log("RES DATA",res.data);
+        $scope.procedures.push({
+           _id: res.data._id,
+           procedure: res.data.procedure,
+           note: res.data.note,
+           isCompleted: true,
+           isEditing: false
+         });
          $scope.createProcedureInput = '';
          $scope.createNoteInput ='';
       })
 
       params.createHasInput = false;
-      $scope.createProcedureInput = '';
-      $scope.createNoteInput = '';
-    }
 
-    $scope.$watch('createProcedureInput', 'createNoteInput', val => {
-      console.log('please create a procedure and note');
-       if (!val && params.createHasInput) {
-         $scope.procedures.pop();
-         params.createProcedureInput = false;
-         params.createNoteInput = false;
-       }else if (val && !params.createHasInput) {
-        $scope.procedures.push({
-          procedure: val,
-          isCompleted: false,
-          note: val,
-          isCompleted: false
-        });
-        params.createHasInput = true;
-       } else if (val && params.createHasInput) {
-          $scope.procedures[$scope.procedures.length -1].procedure = val;
-      }
-    })
+    }
 
    $scope.onCompletedClick = list => {
      list.isCompleted = !list.isCompleted;
@@ -92,60 +80,32 @@ app.controller('ProceduresCtrl', [
      list.isEditing = false;
    };
 
-   $scope.createNote = function() {
-      if (!$scope.createNoteInput) { return; }
-      console.log('trying to create/update a note!!!!!')
-      $http.post('/procedures', {
-        procedure: $scope.createProcedureInput,
-        note: $scope.createNoteInput,
-        isCompleted: false,
-        isEditing: false
-      })
-      .then(function(res){
-        console.log(res.data);
-        $scope.createNoteInput = '';
+   $scope.updateProcedure = function(list) {
+    console.log('getting to update maybe???', list);
 
-      })
-      params.createHasInput = false;
-      $scope.createNoteInput = '';
+    $http.post(`/procedures/${list._id}`, {
+      procedure: list.procedure,
+      note: list.note
+    })
 
-    // $scope.$watch('createNoteInput', val => {
-    //    if (!val && params.createHasInput) {
-    //      $scope.procedures.pop();
-    //      params.createHasInput = false;
-    //    }else if (val && !params.createHasInput) {
-    //     $scope.procedures.push({ task: val, isCompleted: false});
-    //     params.createHasInput = true;
-    //    } else if (val && params.createHasInput) {
-    //       $scope.procedures[$scope.procedures.length -1].task = val;
-    //     }
-    //   })
+    .then(function(res) {
+      console.log(res.data);
+        list.isEditing = false;
+    });
+        list.procedure = list.procedure;
+        list.note = list.note;
+        list.isEditing = false;
     }
 
-
-   // $scope.updateNote = function(list) {
-   //  console.log(list);
-   //  $http.put(`/procedures/${list._id}`, { note: list.updatedNote})
-   //  .then(function(res) {
-   //    console.log(res.data);
-   //      getUpdatedNotes($scope);
-   //      list.isEditing = false;
-   //  });
-
-   //      list.note = list.updatedNote;
-   //      list.isEditing = false;
-   //  }
-
-    $scope.deleteNote = function(list) {
-      console.log('DELETE IT!!!', list);
-       $http.delete(`/procedures`)
+    $scope.deleteProcedure = function(list) {
+      console.log('deleting the procedure!!!', list);
+       $http.delete(`/procedures/${list._id}`)
        .then(function(res) {
         console.log('finally deleting', res.data);
-           // getProcedures($scope);
-           // list.isEditing = false;
        });
-           list.note = list.deletedNote;
-           list.isEditing = false;
+         list.procedure = '';
+         list.note = '';
+         list.isEditing = false;
     }
 
   }

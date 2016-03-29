@@ -1,3 +1,4 @@
+'use strict';
 
 app.controller('ChecklistsCtrl', [
   '$scope', '$http', '$location',
@@ -26,6 +27,7 @@ app.controller('ChecklistsCtrl', [
    },
   ],
 
+// Load data from DB on controller load
     function getTasks() {
       console.log('doing something')
       $http.get('/checklists')
@@ -34,7 +36,7 @@ app.controller('ChecklistsCtrl', [
         $scope.checklists = $scope.checklists.concat(res.data);
         console.log($scope.checklists)
       })
-    }()
+    }();
 
     $scope.createTask = function() {
       if (!$scope.createTaskInput) { return; }
@@ -49,9 +51,7 @@ app.controller('ChecklistsCtrl', [
         $scope.createTaskInput = '';
 
       })
-      // .success(response => {
-      //    getTasks($scope);
-      // })
+
       params.createHasInput = false;
       $scope.createTaskInput = '';
     }
@@ -86,7 +86,10 @@ app.controller('ChecklistsCtrl', [
 
    $scope.updateTask = function(list) {
     console.log(list);
-    $http.put(`/checklists/${list._id}`, { task: list.updatedTask })
+    $http.put(`/checklists/${list._id}`, {
+      task: list.updatedTask
+    })
+
     .then(function(res) {
       console.log(res.data);
         getUpdatedTasks($scope);
@@ -98,12 +101,11 @@ app.controller('ChecklistsCtrl', [
     };
 
     $scope.deleteTask = function(list) {
-      console.log('DELETE IT!!!', list);
+      console.log('deleting the task list!!!', list);
        $http.delete(`/checklists/${list._id}`)
        .then(function(res) {
         console.log('RESPONSE', res.data);
-           // getDeletedTasks($scope);
-           // list.isEditing = false;
+
        });
            list.task = list.deletedTask;
            list.isEditing = false;

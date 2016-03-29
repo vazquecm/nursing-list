@@ -22,13 +22,5 @@ router.post('/login',
   )
 );
 
-// // req.session.user = user;
-// router.delete('/login', (req, res) => {
-//   req.session.regenerate(function(err) {
-//     if (err) throw err;
-
-//     res.redirect('/');
-//   });
-// });
 
 module.exports = router;

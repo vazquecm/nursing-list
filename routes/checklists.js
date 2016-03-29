@@ -1,7 +1,9 @@
-const Checklist = require('../models/checklistsModel')
+'use strict';
+
 const express = require('express');
 const router = express.Router();
 const ctrl = require('../ctrls/checklists');
+const Checklist = require('../models/checklistsModel')
 
 
 router.param('id', (req, res, next, id) => {

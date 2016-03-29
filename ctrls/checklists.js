@@ -1,3 +1,4 @@
+'use strict';
 
 const Checklists = require('../models/checklistsModel');
 
@@ -7,6 +8,7 @@ module.exports = {
   create (req, res) {
     Checklists.create(req.body, (err, checklists) => {
       if (err) throw err;
+      res.send(checklists);
     });
 },
 
@@ -14,7 +16,7 @@ module.exports = {
     console.log(req.body);
     Checklists.update(req.body, (err, checklists) => {
       if (err) throw err;
-
+      res.send(checklists);
     });
 },
 
@@ -22,7 +24,6 @@ module.exports = {
     Checklists.remove(`$_id: {req.params.id}`, (err) => {
       if (err) throw err;
       console.log('checklist deleted')
-
     });
   },
 
@@ -33,6 +34,4 @@ module.exports = {
       res.send(checklists);
     });
   }
-
 };
-

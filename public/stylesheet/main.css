@@ -7,6 +7,7 @@ h1 {
   font-family: 'Bree Serif', serif;
   text-align: center;
   font-weight: bolder;
+  letter-spacing: 4px;
 }
 
 .container-login {
@@ -25,7 +26,7 @@ h1 {
   display: 800%;
 }
 
-/* styleing for navbars */
+/* styling for navbars */
 .navbar, .navbar-default, .navbar-fixed-top, .navbar-fixed-bottom {
   background-color: #0E7275;
 }
@@ -45,7 +46,6 @@ h2.sub-headings {
 /* checklists page */
 .container {
   text-align: center;
-  /*width: 75%;*/
 }
 
 .checklists__create-input {

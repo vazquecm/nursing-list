@@ -1,7 +1,9 @@
-const Procedure = require('../models/proceduresModel')
+'use strict';
+
 const express = require('express');
 const router = express.Router();
 const ctrl = require('../ctrls/procedures');
+const Procedure = require('../models/proceduresModel')
 
 
 router.param('id', (req, res, next, id) => {
@@ -20,7 +22,7 @@ router.param('id', (req, res, next, id) => {
 
 router.get('/procedures', ctrl.find)
 router.post('/procedures', ctrl.create)
-router.put('/procedures/:id', ctrl.update)
-router.delete('/procedures', ctrl.destroy);
+router.post('/procedures/:id', ctrl.update)
+router.delete('/procedures/:id', ctrl.destroy);
 
 module.exports = router;

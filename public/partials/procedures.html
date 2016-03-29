@@ -9,9 +9,9 @@
 <div class="container">
   <div class='page-links'>
     <form ng-submit="createProcedure()">
-      <input class="form-control procedures__create-input" placeholder="Add a procedure" ng-model="createProcedureInput" />
-      <input class="form-control procedures__create-input" placeholder="Notes for Procedures" ng-model="createNoteInput" />
-      <input type="submit" class="btn btn-primary procedures__create-button" value ="Create procedure">
+      <input class="form-control procedures__create-input" placeholder="Add a Procedure" ng-model="createProcedureInput" target="_blank" />
+      <input class="form-control procedures__create-input" placeholder="Notes for Procedures" ng-model="createNoteInput" target="_blank" />
+      <input type="submit" class="btn btn-primary procedures__create-button" value ="Create Procedure">
     </form>
   </div>
 
@@ -23,18 +23,26 @@
   </tr>
   <tr ng-repeat="list in procedures">
     <td>
-      <form>
-        <span>{{list.procedure}}</span>
+      <span ng-if="!list.isEditing"
+      class="procedures__procedure"
+      ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.procedure">
+      {{list.procedure}}
+    </span>
+      <form ng-submit="procedure(list)">
+      <input ng-if="list.isEditing"
+          ng-model="list.procedure"
+          class="form-control procedures__update-input"
+           />
       </form>
     </td>
     <td>
     <span ng-if="!list.isEditing"
       class="procedures__procedure"
-      ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.updatedProcedureNote">
+      ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.note">
       {{list.note}}
     </span>
 
-      <form ng-submit="updateProcedureNote(list)">
+      <form ng-submit="updateNote(list)">
         <input ng-if="list.isEditing"
           ng-model="list.note"
           class="form-control procedures__update-input"
@@ -49,13 +57,13 @@
       </button>
       <button ng-if="!list.isEditing"
         class="btn btn-danger btn-xs"
-        ng-click="deleteNote(list)">
+        ng-click="deleteProcedure(list)">
         Delete
       </button>
 
       <button ng-if="list.isEditing"
         class="btn btn-primary btn-xs"
-        ng-click="updateNote(list)">
+        ng-click="updateProcedure(list)">
         Save
       </button>
       <button ng-if="list.isEditing"
