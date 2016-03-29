@@ -1,15 +1,15 @@
 const Checklist = require('../models/checklistsModel')
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
 const ctrl = require('../ctrls/checklists');
 
 
 router.param('id', (req, res, next, id) => {
-  Checklists
-  .findById(id)
+  Checklist
+  .find(id)
   .populate('checklists')
   .exec( (err, checklists) => {
+    console.log(checklists);
     if (err) throw err;
 
     req.checklists = checklists;
@@ -18,6 +18,7 @@ router.param('id', (req, res, next, id) => {
 
 });
 
+router.get('/checklists', ctrl.find)
 router.post('/checklists', ctrl.create)
 router.put('/checklists/:id', ctrl.update)
 router.delete('/checklists/:id', ctrl.destroy);

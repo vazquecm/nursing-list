@@ -9,4 +9,4 @@ module.exports = mongoose.model('Procedures', mongoose.Schema({
   isCompleted: Boolean,
   isEditing: Boolean
   })
-});
+);

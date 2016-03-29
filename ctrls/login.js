@@ -1,9 +1,9 @@
-//ctrls/login.js
 "use strict";
 
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+
 //dependencies
 const loginUser = require("../models/users");
 

@@ -3,7 +3,7 @@ app.controller('ChecklistsCtrl', [
   '$scope', '$http', '$location',
 
   function($scope, $http, $location) {
-    console.log('creating something!!!');
+
     let params = {
     createHasInput: false
   }
@@ -26,30 +26,45 @@ app.controller('ChecklistsCtrl', [
    },
   ],
 
-    $scope.createTask = function() {
-    console.log('yay, creating a task!!!');
-      if (!$scope.createTaskInput) { return; }
+    function getTasks() {
+      console.log('doing something')
+      $http.get('/checklists')
+        .then(function(res) {
+        console.log(res.data);
+        $scope.checklists = $scope.checklists.concat(res.data);
+        console.log($scope.checklists)
+      })
+    }()
 
+    $scope.createTask = function() {
+      if (!$scope.createTaskInput) { return; }
+      console.log('firing create task post request')
       $http.post('/checklists', {
         task: $scope.createTaskInput,
         isCompleted: false,
         isEditing: false
       })
-      .success(response => {
-         getTasks($scope);
-         $scope.createTaskInput = '';
+      .then(function(res){
+        console.log(res.data);
+        $scope.createTaskInput = '';
+
       })
+      // .success(response => {
+      //    getTasks($scope);
+      // })
       params.createHasInput = false;
       $scope.createTaskInput = '';
     }
 
     $scope.$watch('createTaskInput', val => {
-      console.log('please create a task');
        if (!val && params.createHasInput) {
          $scope.checklists.pop();
          params.createHasInput = false;
        }else if (val && !params.createHasInput) {
-        $scope.checklists.push({ task: val, isCompleted: false});
+        $scope.checklists.push({
+          task: val,
+          isCompleted: false
+        });
         params.createHasInput = true;
        } else if (val && params.createHasInput) {
           $scope.checklists[$scope.checklists.length -1].task = val;
@@ -70,8 +85,11 @@ app.controller('ChecklistsCtrl', [
    };
 
    $scope.updateTask = function(list) {
-    $http.put(`/checklists/${list._id}`, { task: list.updatedTask }).success(response => {
-        getTasks($scope);
+    console.log(list);
+    $http.put(`/checklists/${list._id}`, { task: list.updatedTask })
+    .then(function(res) {
+      console.log(res.data);
+        getUpdatedTasks($scope);
         list.isEditing = false;
     });
 
@@ -80,12 +98,14 @@ app.controller('ChecklistsCtrl', [
     };
 
     $scope.deleteTask = function(list) {
-      console.log('DELETE IT!!!');
-       $http.delete(`/checklists/${list._id}`, {task: list.deleteTask}).success(response => {
-           getTasks($scope);
-           list.isEditing = false;
+      console.log('DELETE IT!!!', list);
+       $http.delete(`/checklists/${list._id}`)
+       .then(function(res) {
+        console.log('RESPONSE', res.data);
+           // getDeletedTasks($scope);
+           // list.isEditing = false;
        });
-           list.task = list.deleteTask;
+           list.task = list.deletedTask;
            list.isEditing = false;
     }
   }

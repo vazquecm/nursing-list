@@ -13,9 +13,9 @@ const passport = require('passport');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
-const multer = require('multer');
 const loginRoutes = require('./routes/login');
 const checklistsRoutes = require('./routes/checklists');
+const proceduresRoutes = require('./routes/procedures');
 
 // init app
 const app = express();
@@ -67,10 +67,10 @@ app.use(passport.session());
 //   res.locals.messages = req.flash();
 //   next();
 // });
-// app.use(multer({dest: 'login'}));
-// app.use(loginRoutes);
-// app.use(checklistsRoutes);
 
+app.use('/', loginRoutes);
+app.use('/', checklistsRoutes);
+app.use('/', proceduresRoutes);
 
 //SASS set up
   app.use(sassMiddleware({

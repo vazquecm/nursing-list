@@ -4,17 +4,15 @@ body {
 
 h1 {
   color: #FFFFFF;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Bree Serif', serif;
   text-align: center;
   font-weight: bolder;
 }
 
-/*.login-page {
+.container-login {
   text-align: center;
-  margin-bottom: 20px;
-  color: #439392;
+  width: 100%;
 }
-*/
 .input-group {
   display: inline-block;
   text-align: center;
@@ -39,15 +37,15 @@ h1 {
 
 h2.sub-headings {
   margin-top: 100px;
-  font-style: italic;
   color: #767c7a;
-  font-family: Courier;
+  font-family: 'Bree Serif', serif;
   text-align: center;
 }
 
 /* checklists page */
 .container {
   text-align: center;
+  /*width: 75%;*/
 }
 
 .checklists__create-input {

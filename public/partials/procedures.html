@@ -4,12 +4,13 @@
   </div>
 </nav>
 
-<h2 class='sub-headings'>Surgical Procedures/Notes</h2>
+<h2 class='sub-headings'>SURGICAL PROCEDURES/NOTES</h2>
 
 <div class="container">
   <div class='page-links'>
     <form ng-submit="createProcedure()">
       <input class="form-control procedures__create-input" placeholder="Add a procedure" ng-model="createProcedureInput" />
+      <input class="form-control procedures__create-input" placeholder="Notes for Procedures" ng-model="createNoteInput" />
       <input type="submit" class="btn btn-primary procedures__create-button" value ="Create procedure">
     </form>
   </div>
