@@ -21,26 +21,29 @@
     <th>FYI & Good To Know</th>
     <th>Actions</th>
   </tr>
+
   <tr ng-repeat="list in procedures">
+
     <td>
       <span ng-if="!list.isEditing"
       class="procedures__procedure"
       ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.procedure">
       {{list.procedure}}
-    </span>
+      </span>
       <form ng-submit="procedure(list)">
-      <input ng-if="list.isEditing"
+         <input ng-if="list.isEditing"
           ng-model="list.procedure"
           class="form-control procedures__update-input"
            />
       </form>
     </td>
+
     <td>
-    <span ng-if="!list.isEditing"
-      class="procedures__procedure"
-      ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.note">
-      {{list.note}}
-    </span>
+      <span ng-if="!list.isEditing"
+        class="procedures__procedure"
+        ng-class="{'procedures__procedure--completed': list.isCompleted}" ng-model="list.note">
+        {{list.note}}
+      </span>
 
       <form ng-submit="updateNote(list)">
         <input ng-if="list.isEditing"
@@ -49,12 +52,14 @@
            />
       </form>
     </td>
+
     <td>
       <button ng-if="!list.isEditing"
         class="btn btn-primary btn-xs"
         ng-click="onEditClick(list)">
         Edit
       </button>
+
       <button ng-if="!list.isEditing"
         class="btn btn-danger btn-xs"
         ng-click="deleteProcedure(list)">
@@ -66,6 +71,7 @@
         ng-click="updateProcedure(list)">
         Save
       </button>
+
       <button ng-if="list.isEditing"
         class="btn btn-default btn-xs"
         ng-click="onCancelClick(list)">
@@ -73,7 +79,7 @@
       </button>
     </td>
   </tr>
- </table>
- <nav class="navbar navbar-default navbar-fixed-bottom">
-  </nav>
+</table>
+   <nav class="navbar navbar-default navbar-fixed-bottom">
+    </nav>
 </div>

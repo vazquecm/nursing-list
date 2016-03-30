@@ -11,7 +11,7 @@ module.exports = {
       res.send(procedures);
     });
 },
-
+// looks for a specific "id" to be updated and then replaces info to it and sets it to the new values chosen //
   update (req, res) {
     Procedures.update(`$_id: {req.params.id}`,
       {$set: {
@@ -24,7 +24,7 @@ module.exports = {
       res.send(procedures);
     });
   },
-
+/// deletes only the chosen "id" from the DOM and also the DB //
   destroy (req, res) {
     Procedures.remove(`$_id: {req.params.id}`, (err) => {
       if (err) throw err;

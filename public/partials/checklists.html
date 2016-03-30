@@ -47,6 +47,7 @@
           ng-click="onEditClick(list)">
           Edit
         </button>
+
         <button ng-if="!list.isEditing"
           class="btn btn-danger btn-xs"
           ng-click="deleteTask(list)">
@@ -58,6 +59,7 @@
           ng-click="updateTask(list)">
           Save
         </button>
+
         <button ng-if="list.isEditing"
           class="btn btn-default btn-xs"
           ng-click="onCancelClick(list)">

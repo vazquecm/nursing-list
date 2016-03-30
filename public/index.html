@@ -8,9 +8,9 @@
     <title>Surgical Checklist</title>
     <link rel="shortcut icon" href="../nurse.png">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'><!--
+    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
- -->    <link rel="stylesheet" type="text/css" href="stylesheet/main.css">
+     <link rel="stylesheet" type="text/css" href="stylesheet/main.css">
   </head>
 
   <body ng-app='MainApp'>
@@ -18,10 +18,15 @@
     <ui-view></ui-view>
     </div>
 
+<!-- DEPENDENCIES -->
     <script src="/lib/angular/angular.js"></script>
     <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/lib/lodash/dist/lodash.js"></script>
+
+<!-- MAIN FILE THAT HANDLES ROUTES -->
     <script src="/app.js"></script>
+
+<!-- SCRIPT CONTROLLERS -->
     <script src="/controllers/loginCtrl.js"></script>
     <script src="/controllers/checklistsCtrl.js"></script>
     <script src="/controllers/proceduresCtrl.js"></script>

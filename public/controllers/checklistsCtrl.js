@@ -8,7 +8,7 @@ app.controller('ChecklistsCtrl', [
     let params = {
     createHasInput: false
   }
-
+// first 3 tasks are hard coded and cannot be edited or deleted permanently, will always come back after page is refreshed //
     $scope.checklists = [
    {
      task: 'Is the Consent signed & dated!!!',
@@ -37,7 +37,7 @@ app.controller('ChecklistsCtrl', [
         console.log($scope.checklists)
       })
     }();
-
+// function allows user to create a new task and adds to list on DOM and also adding to DB //
     $scope.createTask = function() {
       if (!$scope.createTaskInput) { return; }
       console.log('firing create task post request')
@@ -55,7 +55,7 @@ app.controller('ChecklistsCtrl', [
       params.createHasInput = false;
       $scope.createTaskInput = '';
     }
-
+// watches for the last character user types in "input" box and then loads entire text to DOM
     $scope.$watch('createTaskInput', val => {
        if (!val && params.createHasInput) {
          $scope.checklists.pop();
@@ -83,7 +83,7 @@ app.controller('ChecklistsCtrl', [
    $scope.onCancelClick = list => {
      list.isEditing = false;
    };
-
+// function replaces original task to whatever user changes it too -- overrides the create task function above when edit button is clicked, also changes value in the DB //
    $scope.updateTask = function(list) {
     console.log(list);
     $http.put(`/checklists/${list._id}`, {
@@ -99,7 +99,7 @@ app.controller('ChecklistsCtrl', [
         list.task = list.updatedTask;
         list.isEditing = false;
     };
-
+// function deletes info on DOM and also in the DB //
     $scope.deleteTask = function(list) {
       console.log('deleting the task list!!!', list);
        $http.delete(`/checklists/${list._id}`)

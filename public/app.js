@@ -1,3 +1,4 @@
+// handles the routes for the client side, all client files are in the "public" folder //
 var app = angular.module('MainApp', ['ui.router']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

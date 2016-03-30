@@ -12,7 +12,7 @@ app.controller('ProceduresCtrl', [
       isEditing: false,
       isCompleted: false
     }
-
+// first 2 tasks are hard coded and cannot be edited or deleted permanently, will always come back after page is refreshed //
      $scope.procedures = [
    {
      procedure: 'Hepatobiliary & Liver Tx',
@@ -39,7 +39,7 @@ app.controller('ProceduresCtrl', [
       })
     }();
 
-// both input fields used to create one procedure
+// both input fields used to create one procedure loaded to DOM and added to DB //
   $scope.createProcedure = function() {
       if (!$scope.createProcedureInput) { return; }
       if (!$scope.createNoteInput) { return; }
@@ -79,7 +79,7 @@ app.controller('ProceduresCtrl', [
    $scope.onCancelClick = list => {
      list.isEditing = false;
    };
-
+// replaces the original procedure/note created to edited version that display on DOM and is saved in DB
    $scope.updateProcedure = function(list) {
     console.log('getting to update maybe???', list);
 
@@ -96,7 +96,7 @@ app.controller('ProceduresCtrl', [
         list.note = list.note;
         list.isEditing = false;
     }
-
+// deletes info on the DOM and also in the DB //
     $scope.deleteProcedure = function(list) {
       console.log('deleting the procedure!!!', list);
        $http.delete(`/procedures/${list._id}`)
